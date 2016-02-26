@@ -1,0 +1,38 @@
+<%= form_for(@skill) do |f| %>
+  <% if @skill.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@skill.errors.count, "error") %> prohibited this skill from being saved:</h2>
+
+      <ul>
+      <% @skill.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class="form-group">
+     <%= f.hidden_field :fighter_id,:value=>@fighter_id %>
+  </div>
+  <div class="form-group">
+    <%= f.label :skill_type %><br>
+     <table>
+        <thead>
+          <tr>
+            <th>Skill name</th>
+            <th>Skill description</th>
+          </tr>
+        </thead>
+    <% Skill.skill_types.each do |skill| %>
+        <tr>
+          <td><%= f.radio_button :skill_type,skill[0].to_s,:checked =>true %><%= label :skill_type_label, skill[0].to_s %></td>
+          <td><%= $skills_description[skill[0].to_s] %></td>
+        </tr>
+     <% end %>
+     </table>
+  </div>
+  <div class="form-group">
+    <%= f.label :level %><br>
+    <%= f.select :level,[1,2,3,4,5] %>
+  </div>
+    <%= f.submit   class: 'btn btn-default' %>
+<% end %>

@@ -1,0 +1,33 @@
+<%= form_for(@fighter) do |f| %>
+  <% if @fighter.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@fighter.errors.count, "error") %> prohibited this fighter from being saved:</h2>
+
+      <ul>
+      <% @fighter.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= f.label :first_name %><br>
+    <%= f.text_field :first_name %>
+  </div>
+  <div class="form-group">
+    <%= f.label :last_name %><br>
+    <%= f.text_field :last_name %>
+  </div>
+  <div class="form-group">
+    <%= f.label :description %><br>
+    <%= f.text_area :description %>
+  </div>
+  <div class="form-group">
+    <%= f.label :avatar %><br>
+    <%= f.file_field :avatar ,class: 'btn btn-default'%>
+  </div>
+  <div class="actions">
+    <%= f.submit class: 'btn btn-default'%>
+  </div>
+<% end %>

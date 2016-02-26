@@ -1,0 +1,94 @@
+<p id="notice"><%= notice %></p>
+
+<h1 style="text-align: center">Fighters stats:</h1>
+<table class="table table-striped table-hover" style="border-spacing: 20px;">
+	 <thead>
+    <tr>
+      <th></th>
+      <th>
+      	<%= image_tag Fighter.find_by(id: @first_fighter.id).avatar,size:"100x130" %>
+      </th>
+      <th>
+      	<%= image_tag Fighter.find_by(id: @second_fighter.id).avatar,size:"100x130" %>      	
+      </th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+  <tr>
+  	<td>Stat:</td>
+  	<td><%= @first_fighter.name %></td>
+  	<td><%= @second_fighter.name %></td>
+  </tr>
+  <tr>
+  	<td>Health</td>
+  	<td><%= @first_fighter.max_health %></td>
+  	<td><%= @second_fighter.max_health %></td>
+  </tr>
+  <tr>
+  	<td>Damage</td>
+  	<td><%= @first_fighter.damage %></td>
+  	<td><%= @second_fighter.damage %></td>
+  </tr>
+    <tr>
+  	<td>Defense</td>
+  	<td><%= @first_fighter.defence %></td>
+  	<td><%= @second_fighter.defence %></td>
+  </tr>
+    <tr>
+  	<td>Defense penetration</td>
+  	<td><%= @first_fighter.defence_penetration %></td>
+  	<td><%= @second_fighter.defence_penetration %></td>
+  </tr>
+  </tr>
+    <tr>
+  	<td>Skills</td>
+  	<td><%= @first_fighter.skills_arr.map{|skill| "#{skill.skill_type}:#{skill.level}"}.join(', ') %></td>
+  	<td><%= @second_fighter.skills_arr.map{|skill| "#{skill.skill_type}:#{skill.level}"}.join(', ') %></td>
+  </tr>
+</table>
+
+
+<% if @winner==1 %>
+	<h2 style="text-align: center"><%= "#{@first_fighter.name} has won, earning #{@exp_earned} experience." %></h2>
+<% else %>
+	<h2 style="text-align: center"><%= "#{@second_fighter.name} has won, earning #{@exp_earned} experience." %></h2>
+<% end %>
+</br>
+<%= link_to 'Go back to statistics page', statistics_path ,class: 'btn btn-default' %>
+</br>
+</br>
+</br>
+</br>
+</br>
+<h1 style="text-align: center">Fight report:</h1>
+<br/>
+<table class="table">
+<% @fight_results_arr.each do |msg| %>
+	<tr>
+		<td>
+			<% msg.each do |k,v| %>
+				<% case k.to_s %>
+					<% when "space" %>
+					
+					<% when "newTurn" %>
+						<b><u><%= v %></b></u>
+					<% when "currHealth" %>
+						<span style="font-weight: bolder;"><%= v %></span>
+					<% when "attacker" %>
+						<span style="font-weight: bolder;"><%= v %></span>
+					<% when "avoided" %>
+						<span style="color:blue"><%= v %></span>
+					<% when "damageDealt" %>
+						<span style="color:red"><%= v %></span>
+					<% when "regenerated" %>
+						<span style="color:green"><%= v %></span>
+					<% when "defeated" %>
+						<span style="color:red;font-weight: bolder;"><%= v %></span>
+					<% else %>
+						<%= "NOT HANDDDDDDDDDDDDDDDDDDLEEEEEEEEEED YEEEEEEEEEEEEEEETTTTTTTTTTTT" %>
+					<% end %>
+			<% end %>
+		</td>
+	</tr>
+<% end %>
+</table>

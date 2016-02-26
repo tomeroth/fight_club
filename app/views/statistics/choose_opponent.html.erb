@@ -1,0 +1,27 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Choose with whom you want to fight:</h1>
+<%= params[:ids] %>
+<table class="table table-striped table-hover">
+  <thead>
+    <tr>
+      <th>Fighter</th>
+      <th>Skills</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% Statistic.where.not("fighter_id=#{params[:id]}").all.each do |statistic| %>
+    <% if Fighter.find_by("id=#{statistic.fighter_id}").skills.all.count.to_i >=3 then %>
+      <tr>
+        <td><%= image_tag statistic.fighter.avatar,size: "50x70" %></td>
+        <td><%= Fighter.find_by("id=#{statistic.fighter_id}").skills.all.map{|skill|  "#{skill.skill_type}"}.join(', ') %></td>
+        <td><%= button_to 'Choose this opponent', fight_results_statistics_path(:id1 => params[:id],:id2 => statistic.fighter_id) ,class: 'btn btn-default btn-danger'%></td>
+      </tr>
+    <% end %>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to 'Back', statistics_path,class: 'btn btn-default' %>

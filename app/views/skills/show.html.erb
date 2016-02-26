@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Fighter:</strong>
+  <%= @skill.fighter %>
+</p>
+
+<p>
+  <strong>Skill type:</strong>
+  <%= @skill.skill_type %>
+</p>
+
+<p>
+  <strong>Level:</strong>
+  <%= @skill.level %>
+</p>
+
+<%= link_to 'Edit', edit_skill_path(@skill,:fighter_id => @skill.fighter_id) %> |
+<%= link_to 'Back', statistic_path(Statistic.find_by("fighter_id=#{@skill.fighter_id}")) %>

@@ -1,0 +1,23 @@
+<p id="notice"><%= notice %></p>
+<p>
+  <%= image_tag @fighter.avatar,size: "100x140" %>
+</p>
+<p>
+  <strong>First name:</strong>
+  <%= @fighter.first_name %>
+</p>
+
+<p>
+  <strong>Last name:</strong>
+  <%= @fighter.last_name %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @fighter.description %>
+</p>
+
+
+
+<%= link_to 'Edit', edit_fighter_path(@fighter) ,class: 'btn btn-default'%> 
+<%= link_to 'Back', statistic_path(Statistic.find_by("fighter_id=#{@fighter.id}")) ,class: 'btn btn-default'%>

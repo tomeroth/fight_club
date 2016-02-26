@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  fighter_id: fighter_test
+  win: 1
+  lost: 1
+  experience: 1
+
+two:
+  fighter_id: fighter_test
+  win: 1
+  lost: 1
+  experience: 1

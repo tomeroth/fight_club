@@ -1,0 +1,79 @@
+<p id="notice"><%= notice %></p>
+<table class="table table-striped table-hover" style='width:500px;text-align:center'>
+  <tr>
+    <td>
+       <%= image_tag @statistic.fighter.avatar,size: "100x140" %><br/>
+       <%= @fighter_data.name %>
+    </td>
+    <td>
+      Description:<br/><p style='text-align:left'><%= Fighter.find_by("id=#{@statistic.fighter_id}").description %></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+       WON
+    </td>
+    <td>
+       <%= @statistic.win %>
+    </td>
+  </tr>
+  <tr>
+    <td>
+       LOST
+    </td>
+    <td>
+       <%= @statistic.lost %>
+    </td>
+  </tr>
+  <tr>
+    <td>
+       EXPERIENCE
+    </td>
+    <td>
+       <%= @statistic.experience %>
+    </td>
+  </tr>
+  <tr>
+    <td>
+       HEALTH
+    </td>
+    <td>
+       <%= @fighter_data.max_health %>
+    </td>
+  </tr>
+  <tr>
+    <td>
+       DAMAGE
+    </td>
+    <td>
+       <%= @fighter_data.damage %>
+    </td>
+  </tr>
+  <tr>
+    <td>
+       DEFENCE
+    </td>
+    <td>
+       <%= @fighter_data.defence %>
+    </td>
+  </tr>
+  <tr>
+    <td>
+       DEFENCE PENETRATION
+    </td>
+    <td>
+       <%= @fighter_data.defence_penetration %>
+    </td>
+  </tr>
+  <tr>
+    <td>
+       SKILLS
+    </td>
+    <td>
+       <%= Fighter.find_by("id=#{@statistic.fighter_id}").skills.all.map{|skill|  "#{skill.skill_type}: #{skill.level}"}.join(', ') %>
+    </td>
+  </tr>
+</table>
+<%= link_to 'New Skill', {:controller => "skills", :action => "new", :fighter_id => @statistic.fighter_id } ,class: 'btn btn-default'%>
+<%= link_to 'Edit', edit_fighter_path(Fighter.find_by("id=#{@statistic.fighter_id}")) ,class: 'btn btn-default'%> 
+<%= link_to 'Back', statistics_path ,class: 'btn btn-default'%>

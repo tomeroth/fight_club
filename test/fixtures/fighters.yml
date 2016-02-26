@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  first_name: MyString
+  last_name: MyString
+  description: MyText
+  avatar: MyString
+
+two:
+  first_name: MyString
+  last_name: MyString
+  description: MyText
+  avatar: MyString
+
+fighter_test:
+	first_name:"firstname"
+	last_name:"lastname"
+	description:"not needed though"
+	avatar: "pick.jpg"

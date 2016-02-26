@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  fighter_id: fighter_test
+  skill_type: 2
+  level: 4
+
+two:
+  fighter_id: fighter_test
+  skill_type: 3
+  level: 6

@@ -1,0 +1,14 @@
+<h1>Editing Skill</h1>
+<p id="notice">
+	<% if notice!=nil
+		notice.each do|msg| %>
+		<% msg[1].each do |m| %>
+			<%= m %>
+			</br>
+		<% end %>
+	<% end %>
+<% end %>
+</p>
+<%= render 'form' %>
+
+<%= link_to 'Back', statistic_path(Statistic.find_by("fighter_id=#{params[:fighter_id]}")),class: 'btn btn-default'  %>

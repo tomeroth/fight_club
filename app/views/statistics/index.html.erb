@@ -1,0 +1,50 @@
+<p id="notice"><%= notice %></p>
+
+<h1 style="text-align: center">Fighters Ranking Page</h1>
+<table class="table table-striped table-hover">
+  <thead>
+    <tr>
+      <th>Fighter</th>
+      <th>Won</th>
+      <th>Lost</th>
+      <th>Fought</th>
+      <th>Experience</th>
+      <th>Skills</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @statistics.order(experience: :desc).each do |statistic| %>
+      <tr>
+        <td class="active"><%= image_tag statistic.fighter.avatar,size: "50x70" %><br/><%= Fighter.find_by("id=#{statistic.fighter_id}").first_name %> <%= Fighter.find_by("id=#{statistic.fighter_id}").last_name %></td>
+        <td><%= statistic.win %></td>
+        <td><%= statistic.lost %></td>
+        <td><%= (statistic.lost.to_i+statistic.win.to_i) %></td>
+        <td><%= statistic.experience %></td>
+        <td><%= if Fighter.find_by("id=#{statistic.fighter_id}").skills.all.count.to_i<3 then "Not ready to fight, #{Fighter.find_by("id=#{statistic.fighter_id}").skills.all.count} skills only." 
+            else "Ready to fight, having #{Fighter.find_by("id=#{statistic.fighter_id}").skills.all.count.to_i} skills."
+          end%></td>
+        <td><%= button_to 'Show Fighter data', statistic ,method: :get ,class: 'btn btn-default'%></td>
+        <td><%= link_to 'Learn New Skill', new_skill_path(:fighter_id => statistic.fighter_id),class: 'btn btn-default' %></td>
+        <td><%= 
+            if Fighter.find_by("id=#{statistic.fighter_id}").skills.all.count.to_i>=3 && @able_to_fight_array.length>1  then
+              button_to 'Arrange a Fight',choose_opponent_statistics_path(:id => statistic.fighter_id),class: 'btn btn-default' 
+            else
+              button_to 'Arrange a Fight',choose_opponent_statistics_path(:id => statistic.fighter_id),:disabled => true,class: 'btn btn-default'
+             end %></td>
+        <td><%= button_to 'Dismiss Fighter', statistic, method: :delete, data: { confirm: 'Are you sure?' },class: 'btn btn-default' %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<br>
+<br/>
+<% if @able_to_fight_array.length<2 then %>
+  <%= button_to 'Automatic fight',new_fighter_path,class: 'btn btn-default',:disabled => true %>
+<% else %>
+  <%= button_to 'Automatic fight', fight_results_statistics_path(:id1 => @able_to_fight_array[0],:id2 => @able_to_fight_array[1]),class: 'btn btn-default' %>
+<% end %>
+</br>
+<%= button_to 'Add a Fighter', new_fighter_path ,method: :get,class: 'btn btn-default'%>
+
