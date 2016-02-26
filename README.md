@@ -1,5 +1,5 @@
 # Fight Club
-Adding Fighters:
+Adding Fighters:<br>
 	Each fighter has a first and last name, with optional description and obligatory avatar.
 	With each created fighter, his statistics craate automatically.
 Adding a skill:
