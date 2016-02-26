@@ -17,14 +17,14 @@
 		Fighter with higher experience has 75% chance to become an attacker, 25% for the one with less.<br>
 		After fight you will be able to see full raport of all the turns fought.<br>
 		Winner gets experience equal to sum of skills level of his opponent.<br><br>
-For fighters data i have used info from http://marvel.com/characters/list/994/top_marvel_heroes<br><br>
+
 <b>Used additonal gems:</b><br>
-	For storing avatar -> carrierwave<br>
+	For storing avatar pics -> carrierwave<br>
 	For view/css -> bootstrap-sass<br>
 	For testing -> Faker, Capybara, Rspec, FactoryGirl<br>
 
 <b>Test:</b><br>
 	All test are stored in directory /spec<br>
-	I had encounter some difficulties for which i have not found any solution, only Fighter test is working. In general writing tests is something new too me.<br>
+	I had encounter some difficulties for which i have not found any solution, only Fighter test is working.
 
 
