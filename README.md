@@ -1,7 +1,7 @@
 # Fight Club
 <b>Adding Fighters:</b><br>
-	Each fighter has a first and last name, with optional description and obligatory avatar.<br>
-	With each created fighter, his statistics craate automatically.<br><br>
+&#09;	Each fighter has a first and last name, with optional description and obligatory avatar.<br>
+&#09;	With each created fighter, his statistics craate automatically.<br><br>
 <b>Adding a skill:</b><br>
 	Each skill changes fighters stats.<br>
 	Maximum skills amount is 8.<br>
